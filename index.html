@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clavikl Membership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .btn-open-modal {
+      background: #008FFB;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .btn-open-modal:hover {
+      background: #0071c1;
+    }
+
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .modal-content h2 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #222;
+    }
+
+    .modal-content p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    .modal-content .close-btn {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-size: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #999;
+    }
+
+    .modal-content .close-btn:hover {
+      color: #333;
+    }
+
+    .razorpay-payment-button {
+      all: unset;
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 600;
+      background: #008FFB;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .razorpay-payment-button:hover {
+      background: #006dcc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="center-container">
+    <button class="btn-open-modal" onclick="openModal()">Join Clavikl Verified @ ₹49</button>
+  </div>
+
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <h2>Get Verified on Clavikl</h2>
+      <p>Access private forums, verified-only groups, discounts, and more.</p>
+      <form>
+        <script
+          src="https://checkout.razorpay.com/v1/payment-button.js"
+          data-payment_button_id="pl_QoEm64CTyVvVXS"
+          async>
+        </script>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    // Close modal on ESC key press
+    document.addEventListener('keydown', function(e) {
+      if (e.key === "Escape") closeModal();
+    });
+
+    // Close modal if clicked outside the content
+    document.getElementById('paymentModal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
+
+</body>
+</html>
